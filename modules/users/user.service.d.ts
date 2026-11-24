@@ -1,0 +1,21 @@
+import { User } from "./entities/user.entity";
+import { Repository } from "typeorm";
+import { CreateUserDto, UpadateUserDto } from "./dto/user.dto";
+export declare class UserService {
+    private readonly userRepository;
+    constructor(userRepository: Repository<User>);
+    getAllUsers(): Promise<User[]>;
+    createUser(dto: CreateUserDto): Promise<{
+        id: string;
+        name: string;
+        email: string;
+        age: number;
+        phone: string;
+        accounttype: string;
+        address: string;
+        created_at: Date;
+        updated_at: Date;
+    }>;
+    updateUser(id: string, dto: UpadateUserDto): Promise<import("typeorm").UpdateResult>;
+    deleteUser(id: string): Promise<import("typeorm").DeleteResult>;
+}
